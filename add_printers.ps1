@@ -10,53 +10,14 @@ class PrinterTemplate {
 }
 
 ###### INITIALIZE/SET PRINTER VALUES ###########
-$RedPrinter = [PrinterTemplate]::new()
-$RedPrinter.PrinterName = 'Red Printer'
-$RedPrinter.PrinterPort = ''
-$RedPrinter.PrinterIP = ''
-$RedPrinter.PrinterDriver = ''
-
-$BluePrinter = [PrinterTemplate]::new()
-$BluePrinter.PrinterName = 'Blue Printer'
-$BluePrinter.PrinterPort = ''
-$BluePrinter.PrinterIP = ''
-$BluePrinter.PrinterDriver = ''
-
-$OrangePrinter = [PrinterTemplate]::new()
-$OrangePrinter.PrinterName = 'Orange Printer'
-$OrangePrinter.PrinterPort = ''
-$OrangePrinter.PrinterIP = ''
-$OrangePrinter.PrinterDriver = ''
-
-$YellowPrinter = [PrinterTemplate]::new()
-$Yellowrinter.PrinterName = 'Yellow Printer'
-$YellowPrinter.PrinterPort = ''
-$YellowPrinter.PrinterIP = ''
-$YellowPrinter.PrinterDriver = ''
-
-$RainbowPrinter = [PrinterTemplate]::new()
-$RainbowPrinter.PrinterName = 'Rainbow Printer'
-$RainbowPrinter.PrinterPort = ''
-$RainbowPrinter.PrinterIP = ''
-$RainbowPrinter.PrinterDriver = ''
-
-$BlackPrinter = [PrinterTemplate]::new()
-$BlackPrinter.PrinterName = 'Black Printer'
-$BlackPrinter.PrinterPort = ''
-$BlackPrinter.PrinterIP = ''
-$BlackPrinter.PrinterDriver = ''
-
-$PurplePrinter = [PrinterTemplate]::new()
-$PurplePrinter.PrinterName = 'Purple Printer'
-$PurplePrinter.PrinterPort = ''
-$PurplePrinter.PrinterIP = ''
-$PurplePrinter.PrinterDriver = ''
-
-$GrayPrinter = [PrinterTemplate]::new()
-$GrayPrinter.PrinterName = 'Gray Printer'
-$GrayPrinter.PrinterPort = ''
-$GrayPrinter.PrinterIP = ''
-$GrayPrinter.PrinterDriver = ''
+$RedPrinter = [PrinterTemplate]::new(); $RedPrinter.PrinterName = 'Red Printer'; $RedPrinter.PrinterPort = ''; $RedPrinter.PrinterIP = ''; $RedPrinter.PrinterDriver = ''
+$BluePrinter = [PrinterTemplate]::new(); $BluePrinter.PrinterName = 'Blue Printer'; $BluePrinter.PrinterPort = ''; $BluePrinter.PrinterIP = ''; $BluePrinter.PrinterDriver = ''
+$OrangePrinter = [PrinterTemplate]::new(); $OrangePrinter.PrinterName = 'Orange Printer'; $OrangePrinter.PrinterPort = ''; $OrangePrinter.PrinterIP = ''; $OrangePrinter.PrinterDriver = ''
+$YellowPrinter = [PrinterTemplate]::new();$Yellowrinter.PrinterName = 'Yellow Printer'; $YellowPrinter.PrinterPort = ''; $YellowPrinter.PrinterIP = ''; $YellowPrinter.PrinterDriver = ''
+$RainbowPrinter = [PrinterTemplate]::new(); $RainbowPrinter.PrinterName = 'Rainbow Printer'; $RainbowPrinter.PrinterPort = ''; $RainbowPrinter.PrinterIP = ''; $RainbowPrinter.PrinterDriver = ''
+$BlackPrinter = [PrinterTemplate]::new(); $BlackPrinter.PrinterName = 'Black Printer'; $BlackPrinter.PrinterPort = ''; $BlackPrinter.PrinterIP = ''; $BlackPrinter.PrinterDriver = ''
+$PurplePrinter = [PrinterTemplate]::new(); $PurplePrinter.PrinterName = 'Purple Printer'; $PurplePrinter.PrinterPort = ''; $PurplePrinter.PrinterIP = ''; $PurplePrinter.PrinterDriver = ''
+$GrayPrinter = [PrinterTemplate]::new(); $GrayPrinter.PrinterName = 'Gray Printer'; $GrayPrinter.PrinterPort = ''; $GrayPrinter.PrinterIP = ''; $GrayPrinter.PrinterDriver = ''
 
 #### Place All Initilized Printer Instanced objects into an Array List
 $PrinterArray = $RedPrinter, $BluePrinter, $OrangePrinter, $YellowPrinter, $RainbowPrinter, $BlackPrinter, $PurplePrinter, $GrayPrinter
@@ -65,5 +26,6 @@ $PrinterArray = $RedPrinter, $BluePrinter, $OrangePrinter, $YellowPrinter, $Rain
 for ($num = 0, $num -le 8 ; $num++) {
 
 Add-PrinterPort -Name $PrinterArray[$num].PrinterName() -PrinterHostAddress $PrinterArray[$num].PrinterIP()
-Add-Printer -DriverName dellopd.inf -Name Test01 -PortName
+Add-Printer -DriverName <PLACEHOLDER> -Name $PrinterArray[$num].PrinterName() -PortName
+
 }
