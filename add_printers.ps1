@@ -10,7 +10,7 @@ class PrinterTemplate {
 }
 
 ###### INITIALIZE/SET PRINTER VALUES ###########
-$RedPrinter = [PrinterTemplate]::new(); $RedPrinter.PrinterName = 'Red Printer'; $RedPrinter.PrinterPort = ''; $RedPrinter.PrinterIP = ''; $RedPrinter.PrinterDriver = ''
+$RedPrinter = [PrinterTemplate]::new(); $RedPrinter.PrinterName = 'Red Printer'; $RedPrinter.PrinterPort = ''; $RedPrinter.PrinterIP = '192.168.26.XXX'; $RedPrinter.PrinterDriver = ''
 $BluePrinter = [PrinterTemplate]::new(); $BluePrinter.PrinterName = 'Blue Printer'; $BluePrinter.PrinterPort = ''; $BluePrinter.PrinterIP = ''; $BluePrinter.PrinterDriver = ''
 $OrangePrinter = [PrinterTemplate]::new(); $OrangePrinter.PrinterName = 'Orange Printer'; $OrangePrinter.PrinterPort = ''; $OrangePrinter.PrinterIP = ''; $OrangePrinter.PrinterDriver = ''
 $YellowPrinter = [PrinterTemplate]::new();$Yellowrinter.PrinterName = 'Yellow Printer'; $YellowPrinter.PrinterPort = ''; $YellowPrinter.PrinterIP = ''; $YellowPrinter.PrinterDriver = ''
@@ -26,6 +26,6 @@ $PrinterArray = $RedPrinter, $BluePrinter, $OrangePrinter, $YellowPrinter, $Rain
 for ($num = 0, $num -le 8 ; $num++) {
 
 Add-PrinterPort -Name $PrinterArray[$num].PrinterName() -PrinterHostAddress $PrinterArray[$num].PrinterIP()
-Add-Printer -DriverName <PLACEHOLDER> -Name $PrinterArray[$num].PrinterName() -PortName
+Add-Printer -DriverName $PrinterArray[$num].PrinterDriver() -Name $PrinterArray[$num].PrinterName() -Port $PrinterArray[$num].PrinterIP()
 
 }
