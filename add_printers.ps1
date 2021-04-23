@@ -17,7 +17,7 @@ class PrinterTempl {
     [string]$PrinterDriver
 }
 
-# OUR LOCALLY INSTALLED DRIVER(S)
+# OUR LOCALLY INSTALLED DRIVERS
 $BroDriver = 'Brother Generic Jpeg Type2 Class Driver'
 $HPDriver = 'HP Universal Printing PCL 6'
 
@@ -35,7 +35,7 @@ $GrayPrinter = [PrinterTempl]::new(); $GrayPrinter.PrinterName = 'PT-Gray_Printe
 $PrinterArray = $RedPrinter, $BluePrinter, $OrangePrinter, $YellowPrinter, $RainbowPrinter, $BlackPrinter, $PurplePrinter, $GrayPrinter
 
 # ITERATE THROUGH OUR PRINTER ARRAY TO ADD PRINTERS ON LOCAL MACHINE
-for ($num = 0, $num -le 8 ; $num++) {
+for ($num = 0, $num -le $PrinterArray.length() - 1 ; $num++) {
 Add-PrinterPort -Name $PrinterArray[$num].PrinterName -PrinterHostAddress $PrinterArray[$num].PrinterIP && Start-Sleep 1
 Add-PrinterDriver -Name $PrinterArray[$num].PrinterDriver && Start-Sleep 1
 Add-Printer -Name $PrinterArray[$num].PrinterName -DriverName $PrinterArray[$num].PrinterDriver -Port $PrinterArray[$num].PrinterPort
