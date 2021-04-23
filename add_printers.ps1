@@ -19,6 +19,7 @@ class PrinterTempl {
 
 # OUR LOCALLY INSTALLED DRIVER(S)
 $BroDriver = 'Brother Generic Jpeg Type2 Class Driver'
+$HPDriver = 'HP Universal Printing PCL 6'
 
 # INITIALIZE/SET PRINTER VALUES ###########
 $RedPrinter = [PrinterTempl]::new(); $RedPrinter.PrinterName = 'PT-Red_Printer'; $RedPrinter.PrinterPort = 'PT-Red_Printer'; $RedPrinter.PrinterIP = '192.168.26.XXX'; $RedPrinter.PrinterDriver = $BroDriver
