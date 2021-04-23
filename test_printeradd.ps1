@@ -10,7 +10,7 @@ class PrinterTemplate {
 }
 
 ###### INITIALIZE/SET PRINTER VALUES ###########
-$OrangePrinter = [PrinterTemplate]::new(); $OrangePrinter.PrinterName = 'Orange Printer'; $OrangePrinter.PrinterPort = '192.168.26.3'; $OrangePrinter.PrinterIP = '192.168.26.3'; $OrangePrinter.PrinterDriver = 'HP Universal Printing PCL 6'
+$OrangePrinter = [PrinterTemplate]::new(); $OrangePrinter.PrinterName() = 'Orange Printer'; $OrangePrinter.PrinterPort() = '192.168.26.3'; $OrangePrinter.PrinterIP() = '192.168.26.3'; $OrangePrinter.PrinterDriver() = 'HP Universal Printing PCL 6'
 
 
 #### Place All Initilized Printer Instanced objects into an Array List

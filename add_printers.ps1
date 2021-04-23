@@ -29,3 +29,5 @@ Add-PrinterPort -Name $PrinterArray[$num].PrinterName() -PrinterHostAddress $Pri
 Add-Printer -DriverName $PrinterArray[$num].PrinterDriver() -Name $PrinterArray[$num].PrinterName() -Port $PrinterArray[$num].PrinterIP()
 
 }
+
+
