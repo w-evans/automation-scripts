@@ -22,13 +22,13 @@ $BroDriver = 'Brother Generic Jpeg Type2 Class Driver'
 
 # INITIALIZE/SET PRINTER VALUES ###########
 $RedPrinter = [PrinterTempl]::new(); $RedPrinter.PrinterName = 'PT-Red_Printer'; $RedPrinter.PrinterPort = 'PT-Red_Printer'; $RedPrinter.PrinterIP = '192.168.26.XXX'; $RedPrinter.PrinterDriver = $BroDriver
-$BluePrinter = [PrinterTempl]::new(); $BluePrinter.PrinterName = 'PT-Blue_Printer'; $BluePrinter.PrinterPort = ''; $BluePrinter.PrinterIP = '192.168.26.XXX'; $BluePrinter.PrinterDriver = $BroDriver
-$OrangePrinter = [PrinterTempl]::new(); $OrangePrinter.PrinterName = 'PT-Orange_Printer'; $OrangePrinter.PrinterPort = ''; $OrangePrinter.PrinterIP = '192.168.26.XXX'; $OrangePrinter.PrinterDriver = $BroDriver
-$YellowPrinter = [PrinterTempl]::new();$Yellowrinter.PrinterName = 'PT-Yellow_Printer'; $YellowPrinter.PrinterPort = ''; $YellowPrinter.PrinterIP = '192.168.26.XXX'; $YellowPrinter.PrinterDriver = $BroDriver
-$RainbowPrinter = [PrinterTempl]::new(); $RainbowPrinter.PrinterName = 'PT-Rainbow_Printer'; $RainbowPrinter.PrinterPort = ''; $RainbowPrinter.PrinterIP = '192.168.26.XXX'; $RainbowPrinter.PrinterDriver = $BroDriver
-$BlackPrinter = [PrinterTempl]::new(); $BlackPrinter.PrinterName = 'PT-Black_Printer'; $BlackPrinter.PrinterPort = ''; $BlackPrinter.PrinterIP = '192.168.26.XXX'; $BlackPrinter.PrinterDriver = $BroDriver
-$PurplePrinter = [PrinterTempl]::new(); $PurplePrinter.PrinterName = 'PT-Purple_Printer'; $PurplePrinter.PrinterPort = ''; $PurplePrinter.PrinterIP = '192.168.26.XXX'; $PurplePrinter.PrinterDriver = $BroDriver
-$GrayPrinter = [PrinterTempl]::new(); $GrayPrinter.PrinterName = 'PT-Gray_Printer'; $GrayPrinter.PrinterPort = ''; $GrayPrinter.PrinterIP = '192.168.26.XXX'; $GrayPrinter.PrinterDriver = $BroDriver
+$BluePrinter = [PrinterTempl]::new(); $BluePrinter.PrinterName = 'PT-Blue_Printer'; $BluePrinter.PrinterPort = 'PT-Blue_Printer'; $BluePrinter.PrinterIP = '192.168.26.XXX'; $BluePrinter.PrinterDriver = $BroDriver
+$OrangePrinter = [PrinterTempl]::new(); $OrangePrinter.PrinterName = 'PT-Orange_Printer'; $OrangePrinter.PrinterPort = 'PT-Orange_Printer'; $OrangePrinter.PrinterIP = '192.168.26.XXX'; $OrangePrinter.PrinterDriver = $BroDriver
+$YellowPrinter = [PrinterTempl]::new();$Yellowrinter.PrinterName = 'PT-Yellow_Printer'; $YellowPrinter.PrinterPort = 'PT-Yellow_Printer'; $YellowPrinter.PrinterIP = '192.168.26.XXX'; $YellowPrinter.PrinterDriver = $BroDriver
+$RainbowPrinter = [PrinterTempl]::new(); $RainbowPrinter.PrinterName = 'PT-Rainbow_Printer'; $RainbowPrinter.PrinterPort = 'PT-Rainbow_Printer'; $RainbowPrinter.PrinterIP = '192.168.26.XXX'; $RainbowPrinter.PrinterDriver = $BroDriver
+$BlackPrinter = [PrinterTempl]::new(); $BlackPrinter.PrinterName = 'PT-Black_Printer'; $BlackPrinter.PrinterPort = 'PT-Black_Printer'; $BlackPrinter.PrinterIP = '192.168.26.XXX'; $BlackPrinter.PrinterDriver = $BroDriver
+$PurplePrinter = [PrinterTempl]::new(); $PurplePrinter.PrinterName = 'PT-Purple_Printer'; $PurplePrinter.PrinterPort = 'PT-Purple_Printer'; $PurplePrinter.PrinterIP = '192.168.26.XXX'; $PurplePrinter.PrinterDriver = $BroDriver
+$GrayPrinter = [PrinterTempl]::new(); $GrayPrinter.PrinterName = 'PT-Gray_Printer'; $GrayPrinter.PrinterPort = 'PT-Gray_Printer'; $GrayPrinter.PrinterIP = '192.168.26.XXX'; $GrayPrinter.PrinterDriver = $BroDriver
 
 # Place All Initilized Printer Instanced objects into an Array List
 $PrinterArray = $RedPrinter, $BluePrinter, $OrangePrinter, $YellowPrinter, $RainbowPrinter, $BlackPrinter, $PurplePrinter, $GrayPrinter
