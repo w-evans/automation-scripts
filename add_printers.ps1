@@ -21,7 +21,7 @@ class PrinterTempl {
 $BroDriver = 'Brother Generic Jpeg Type2 Class Driver'
 $HPDriver = 'HP Universal Printing PCL 6'
 
-# INITIALIZE/SET PRINTER VALUES ###########
+# INITIALIZE/SET PRINTER VALUES
 $RedPrinter = [PrinterTempl]::new(); $RedPrinter.PrinterName = 'PT-Red_Printer'; $RedPrinter.PrinterPort = 'PT-Red_Printer'; $RedPrinter.PrinterIP = '192.168.26.5'; $RedPrinter.PrinterDriver = $BroDriver
 $BluePrinter = [PrinterTempl]::new(); $BluePrinter.PrinterName = 'PT-Blue_Printer'; $BluePrinter.PrinterPort = 'PT-Blue_Printer'; $BluePrinter.PrinterIP = '192.168.26.6'; $BluePrinter.PrinterDriver = $BroDriver
 $OrangePrinter = [PrinterTempl]::new(); $OrangePrinter.PrinterName = 'PT-Orange_Printer'; $OrangePrinter.PrinterPort = 'PT-Orange_Printer'; $OrangePrinter.PrinterIP = '192.168.26.7'; $OrangePrinter.PrinterDriver = $BroDriver
@@ -31,15 +31,23 @@ $PurplePrinter = [PrinterTempl]::new(); $PurplePrinter.PrinterName = 'PT-Purple_
 $GrayPrinter = [PrinterTempl]::new(); $GrayPrinter.PrinterName = 'PT-Gray_Printer'; $GrayPrinter.PrinterPort = 'PT-Gray_Printer'; $GrayPrinter.PrinterIP = '192.168.26.11'; $GrayPrinter.PrinterDriver = $BroDriver
 $YellowPrinter = [PrinterTempl]::new(); $YellowPrinter.PrinterName = 'PT-Yellow_Printer'; $YellowPrinter.PrinterPort = 'PT-Yellow_Printer'; $YellowPrinter.PrinterIP = '192.168.26.12'; $YellowPrinter.PrinterDriver = $BroDriver
 
-# Place All Initilized Printer Instanced objects into an Array List
+# PLACE ALL INITILIZED PRINTER INSTANCED OBJECTS INTO AN ARRAY LIST
 $PrinterArray = $RedPrinter, $BluePrinter, $OrangePrinter, $RainbowPrinter, $BlackPrinter, $PurplePrinter, $GrayPrinter, $YellowPrinter
 
 # ITERATE THROUGH OUR PRINTER ARRAY TO ADD PRINTERS ON LOCAL MACHINE
 for ($num = 0; $num -le $PrinterArray.Length-1; $num++) {
-Remove-PrinterPort -Name $PrinterArray[$num].PrinterPort.toString()
-Add-PrinterPort -Name $PrinterArray[$num].PrinterName.toString() -PrinterHostAddress $PrinterArray[$num].PrinterIP.toString()
-Add-PrinterDriver -Name $PrinterArray[$num].PrinterDriver.toString() 
-Add-Printer -Name $PrinterArray[$num].PrinterName.toString() -DriverName $PrinterArray[$num].PrinterDriver.toString() -Port $PrinterArray[$num].PrinterPort.toString()
+
+    #Remove Printer Port to avoid 'already exists' error @ array $num
+    Remove-PrinterPort -Name $PrinterArray[$num].PrinterPort.toString()
+    #Add Printer port @ current array $num
+    Add-PrinterPort -Name $PrinterArray[$num].PrinterName.toString() -PrinterHostAddress $PrinterArray[$num].PrinterIP.toString()
+    #Add Printer driver @ current array $num
+    Add-PrinterDriver -Name $PrinterArray[$num].PrinterDriver.toString()
+    #Add Printer @ current array $num
+    Add-Printer -Name $PrinterArray[$num].PrinterName.toString() -DriverName $PrinterArray[$num].PrinterDriver.toString() -Port $PrinterArray[$num].PrinterPort.toString()
+
 }
 
+# PRINT OUT ALL PT INSTALLED PRINTERS TO VERIFY
+Get-Printer PT*
 
