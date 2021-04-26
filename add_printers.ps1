@@ -36,17 +36,10 @@ $PrinterArray = $RedPrinter, $BluePrinter, $OrangePrinter, $RainbowPrinter, $Bla
 
 # ITERATE THROUGH OUR PRINTER ARRAY TO ADD PRINTERS ON LOCAL MACHINE
 for ($num = 0; $num -le $PrinterArray.Length-1; $num++) {
-Write-Host $PrinterArray[$num].PrinterName.toString()
-Write-Host $PrinterArray[$num].PrinterPort.toString()
-Write-Host $PrinterArray[$num].PrinterIP.toString()
-Write-Host '================================'
-
-
-###Add-PrinterPort -Name $PrinterArray[$num].PrinterName.toString() -PrinterHostAddress $PrinterArray[$num].PrinterIP.toString()
-##Start-Sleep 1
-##Add-PrinterDriver -Name $PrinterArray[$num].PrinterDriver.toString() 
-##Start-Sleep 1
-##Add-Printer -Name $PrinterArray[$num].PrinterName.toString() -DriverName $PrinterArray[$num].PrinterDriver.toString() -Port $PrinterArray[$num].PrinterPort.toString()
+Remove-PrinterPort -Name $PrinterArray[$num].PrinterPort.toString()
+Add-PrinterPort -Name $PrinterArray[$num].PrinterName.toString() -PrinterHostAddress $PrinterArray[$num].PrinterIP.toString()
+Add-PrinterDriver -Name $PrinterArray[$num].PrinterDriver.toString() 
+Add-Printer -Name $PrinterArray[$num].PrinterName.toString() -DriverName $PrinterArray[$num].PrinterDriver.toString() -Port $PrinterArray[$num].PrinterPort.toString()
 }
 
 
