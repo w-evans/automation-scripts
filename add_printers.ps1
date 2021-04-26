@@ -32,15 +32,21 @@ $GrayPrinter = [PrinterTempl]::new(); $GrayPrinter.PrinterName = 'PT-Gray_Printe
 $YellowPrinter = [PrinterTempl]::new(); $YellowPrinter.PrinterName = 'PT-Yellow_Printer'; $YellowPrinter.PrinterPort = 'PT-Yellow_Printer'; $YellowPrinter.PrinterIP = '192.168.26.12'; $YellowPrinter.PrinterDriver = $BroDriver
 
 # Place All Initilized Printer Instanced objects into an Array List
-$PrinterArray = $RedPrinter, $BluePrinter, $OrangePrinter, $YellowPrinter, $RainbowPrinter, $BlackPrinter, $PurplePrinter, $GrayPrinter
+$PrinterArray = $RedPrinter, $BluePrinter, $OrangePrinter, $RainbowPrinter, $BlackPrinter, $PurplePrinter, $GrayPrinter, $YellowPrinter
 
 # ITERATE THROUGH OUR PRINTER ARRAY TO ADD PRINTERS ON LOCAL MACHINE
-for ($num = 0; $num -le 8; $num++) {
-Add-PrinterPort -Name $PrinterArray[$num].PrinterName -PrinterHostAddress $PrinterArray[$num].PrinterIP 
-Start-Sleep 1
-Add-PrinterDriver -Name $PrinterArray[$num].PrinterDriver 
-Start-Sleep 1
-Add-Printer -Name $PrinterArray[$num].PrinterName -DriverName $PrinterArray[$num].PrinterDriver -Port $PrinterArray[$num].PrinterPort
+for ($num = 0; $num -le $PrinterArray.Length-1; $num++) {
+Write-Host $PrinterArray[$num].PrinterName.toString()
+Write-Host $PrinterArray[$num].PrinterPort.toString()
+Write-Host $PrinterArray[$num].PrinterIP.toString()
+Write-Host '================================'
+
+
+###Add-PrinterPort -Name $PrinterArray[$num].PrinterName.toString() -PrinterHostAddress $PrinterArray[$num].PrinterIP.toString()
+##Start-Sleep 1
+##Add-PrinterDriver -Name $PrinterArray[$num].PrinterDriver.toString() 
+##Start-Sleep 1
+##Add-Printer -Name $PrinterArray[$num].PrinterName.toString() -DriverName $PrinterArray[$num].PrinterDriver.toString() -Port $PrinterArray[$num].PrinterPort.toString()
 }
 
 
