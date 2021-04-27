@@ -3,6 +3,9 @@ $PreSharedKey = Read-Host "enter Pre-Shared Key: "
 $VPNname = 'PT-VPN'
 $VPNtype = 'L2tp'
 
+#output for user before connection is added
+Write-Host "Note: Your Login is your work email & rippling password"
+
 #Remove ALL existing VPNs
 Get-VpnConnection -AllUserConnection | Remove-VpnConnection -Force
 
