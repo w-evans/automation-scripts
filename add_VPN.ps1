@@ -1,5 +1,5 @@
 $VPNaddress = 'pt-brwqkwngtbc.dynamic-m.com'
-$PreSharedKey = 'D!gitalRail5'
+$PreSharedKey = ''
 $VPNname = 'PT-VPN'
 $VPNtype = 'L2tp'
 
