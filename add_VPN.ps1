@@ -1,5 +1,5 @@
 $VPNaddress = 'pt-brwqkwngtbc.dynamic-m.com'
-$PreSharedKey = 'D!gitalRail5'
+$PreSharedKey = Read-Host 'enter pre-shared key' -MaskInput -AsSecureString
 $VPNname = 'PT-VPN'
 $VPNtype = 'L2tp'
 
