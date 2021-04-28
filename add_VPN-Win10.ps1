@@ -13,7 +13,7 @@ Get-VpnConnection -AllUserConnection | Remove-VpnConnection -Force
 Add-VpnConnection -Name $VPNname -ServerAddress $VPNaddress -TunnelType $VPNtype -AllUserConnection -L2tpPsk $PreSharedKey -AuthenticationMethod Pap -Force
 
 #set our execution policy back to signed certs
-SetExecution-Policy AllSigned -Force
+Set-ExecutionPolicy AllSigned -Force
 
 #Verify that our VPN has been added
 Get-VpnConnection -AllUserConnection
