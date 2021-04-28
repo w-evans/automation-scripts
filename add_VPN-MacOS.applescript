@@ -15,8 +15,8 @@ set vpn_name to "PT-VPN"
 set vpn_url to "pt-brwqkwngtbc.dynamic-m.com"
 
 
-# start apple interactive scripting - aka formatting going to shit 
-
+# start apple interactive scripting - aka formatting going to shit ######
+#########################################################################
 
 #closes any existing network settings window; which will break the script
 tell application "System Preferences"
