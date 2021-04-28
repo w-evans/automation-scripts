@@ -1,6 +1,3 @@
-#allow scripts to be run
-SetExecution-Policy Unrestricted -Force
-
 $VPNaddress = 'pt-brwqkwngtbc.dynamic-m.com'
 $PreSharedKey = Read-Host "enter Pre-Shared Key: "
 $VPNname = 'PT-VPN'
