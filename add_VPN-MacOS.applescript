@@ -1,21 +1,32 @@
+#user inputs email + and set to variable we can use later
 set user_input to display dialog "What is your work email?" default answer ""
 set user_id to text returned of user_input
 
+#user inputs password and set to variable we can use later -> **plaintext**
 set user_input2 to display dialog "What is your rippling password?" default answer ""
 set user_pw to text returned of user_input2
 
+#user inputs PSK + and set to variable we can use later
 set user_input3 to display dialog "What is the pre-shared key?" default answer ""
 set vpn_psk to text returned of user_input3
 
+#our initialized variables with values set
 set vpn_name to "PT-VPN"
 set vpn_url to "pt-brwqkwngtbc.dynamic-m.com"
 
+
+# start apple interactive scripting - aka formatting going to shit 
+
+
+#closes any existing network settings window; which will break the script
 tell application "System Preferences"
 	reveal pane "Network"
 	quit
 	delay 1
 end tell
 
+
+#symphony of chaos insues, 
 tell application "System Preferences"
 	reveal pane "Network"
 	activate
