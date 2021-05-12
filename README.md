@@ -6,7 +6,7 @@
 
 **MacOS/**  
 add_VPN-MacOS.applescript - Adds new VPN config for MacOS Big Sur (AppleScript)  
-add_Printers-MacOS.py - Adds ALL existing printers to a MacOS local machine (Python) --NOT FINISHED--  
+add_Printers-MacOS.py - Adds ALL existing printers to a MacOS local machine (Python) 
 
 
 **Windows 10/**  
