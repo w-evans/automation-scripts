@@ -50,7 +50,3 @@ for ($num = 0; $num -le $PrinterArray.Length-1; $num++) {
 
 # PRINT OUT ALL PT INSTALLED PRINTERS TO VERIFY
 Get-Printer PT*
-
-
-#execution policy cleanup
-Set-ExecutionPolicy AllSigned -Force
