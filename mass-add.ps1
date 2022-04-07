@@ -9,6 +9,7 @@ function Mass-Add {
             ForEach ($group in $groups) { 
                 Try {
                     Add-ADGroupMember -Server $domain -Id $group -Members $user.toString()
+                    Write-Host $user 'added to' $group 'in' $domain
                 }
                 Catch {
                     Write-Host 'error:' $domain ':' $user ':' $group ':' $_
