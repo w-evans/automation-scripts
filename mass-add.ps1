@@ -2,9 +2,9 @@ function Mass-Add {
     #any amount of users to any amount of groups in any amount of domains
     $exceldata = Import-CSV "C:\Users.csv"
     
-    $users = Import-CSV 'C:\Users.csv' | Select -ExpandProperty userID
-    $domains = Import-CSV 'C:\Users.csv' | Select -ExpandProperty domain
-    $groups = Import-CSV 'C:\Users.csv' | Select -ExpandProperty group
+    $users = $exceldata | Select -ExpandProperty userID
+    $domains = $exceldata | Select -ExpandProperty domain
+    $groups = $exceldata | Select -ExpandProperty group
     
     ForEach ($user in $users) {  
         ForEach ($domain in $domains) {
