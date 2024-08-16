@@ -1,0 +1,109 @@
+#auth: will.evans@antares.com
+#creation date: 7/24/24
+#desc: queries Sailpoint API for Access Request status data, exports to excel
+<#
+json.config needs to be in present working directory ($pwd) with following key:value pairs:
+{
+  client_id: "xxxxx",
+  client_secret: "xxxxx",
+  baseURL: "xxxxxx"
+}
+#>
+#imports
+Import-Module ImportExcel
+#var init
+$out_path = "<path>"
+#custom objects
+class RequestObj {
+    [string]$name
+    [string]$createdDate
+    [string]$createdTime
+    [string]$state
+}
+class PendingObj {
+    [string]$name
+    [string]$createdDate
+    [string]$createdTime
+    [string]$requestType
+    [string]$requestedObject
+    [string]$requesterComment
+    [string]$requestedFor
+    [string]$requester
+}
+#functions
+function Auth-SailPoint {
+    
+    cd "<path>"
+    # Read configuration from config.json in current directory, hides our secret
+    $configPath = Join-Path -Path $pwd -ChildPath 'config.json'
+    $config = Get-Content -Raw -Path $configPath | ConvertFrom-Json
+
+    #uses config.json to create request for token, returns token object with access_token(bearer)
+    try {
+        $token = Invoke-RestMethod -Uri $config.baseURL -Method POST -ContentType 'application/x-www-form-urlencoded' -Body @{
+            grant_type = 'client_credentials'
+            client_id = $config.client_id
+            client_secret = $config.client_secret
+        }
+    $session_token = $token.access_token
+    }catch{ $_ }
+
+    #generate headers using token obj
+    $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+    $headers.Add("Accept", "application/json")
+    $headers.Add("Authorization", "Bearer $session_token")
+
+    return $headers
+}
+function Helper-Approved {
+    
+    #query
+    $response_approved = Invoke-RestMethod 'https://<tenant>.api.identitynow.com/beta/access-request-status' -Method 'GET' -Headers $headers
+    #array init
+    $approved_master = @()
+    
+    ForEach ($x in $response_approved) {
+
+        #create inst obj of request
+        $inst_obj = [RequestObj]::new()
+        $inst_obj.name = $x.name
+        $inst_obj.createdDate = ($x.created -split ' ')[0]
+        $inst_obj.createdTime = ($x.created -split ' ')[1] 
+        $inst_obj.state = $x.state
+    
+        $approved_master += $inst_obj
+        }
+    $approved_master | export-excel -path $Out_path -worksheetname "approved" -append -autosize
+}
+function Helper-Pending {
+    
+    #query
+    $response_pending = Invoke-RestMethod 'https://<tenant>.api.identitynow.com/v3/access-request-approvals/pending' -Method 'GET' -Headers $headers
+    #array init
+    $pending_master = @()
+    
+    ForEach ($x in $response_pending) {
+    
+        #create inst obj of request
+        $inst_obj = [PendingObj]::new()
+        $inst_obj.name = $x.name
+        $inst_obj.createdDate = ($x.created -split ' ')[0]
+        $inst_obj.createdTime = ($x.created -split ' ')[1]
+        $inst_obj.requestType = $x.requestType
+        $inst_obj.requestedObject = ((($x.requestedObject -split 'name=')[1]) -split 'description=')[0]
+        $inst_obj.requesterComment = (($x.requesterComment -split '@{comment=')[1] -split 'author=')[0]
+        $inst_obj.requestedFor = ($x.requestedFor -split 'name=')[1].trimEnd('}')
+        $inst_obj.requester = ($x.requester -split 'name=')[1].trimEnd('}')
+    
+        $pending_master += $inst_obj
+    }
+    $pending_master | export-excel -path $Out_path -worksheetname "pending" -append -autosize
+}
+
+#main entry point
+#1) auth to sailpoint
+$headers = Auth-SailPoint
+#2) query sailpoint access requests that are pending, export to excel
+Helper-Pending
+#3) query sailpoint access requests that are approved, export to excel
+Helper-Approved
